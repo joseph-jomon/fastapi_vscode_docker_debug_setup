@@ -5,6 +5,7 @@
             "name": "Python Debugger: Remote Attach",
             "type": "debugpy",
             "request": "attach",
+           // "preLaunchTask": "Docker Compose Up",
             "connect": {
                 "host": "localhost",
                 "port": 5678
@@ -14,7 +15,9 @@
                     "localRoot": "${workspaceFolder}/app_folder/app",
                     "remoteRoot": "/app"
                 }
-            ]
+            ],
+            "justMyCode": false,
+
         },
         
     ]

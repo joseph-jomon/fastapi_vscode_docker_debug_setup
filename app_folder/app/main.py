@@ -8,7 +8,7 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     myvar = "somvar"
-    return {"Hello": f"World, its me{myvar} again Joseph"}
+    return {"Hello": f"World, its me{myvar} again Joseph with fast reload and launch debug config it is not attatch"}
 
 
 @app.get("/items/{item_id}")

@@ -1,17 +1,12 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "docker-build",
-			"label": "docker-build",
-			"platform": "python",
-			"dockerBuild": {
-				"tag": "vscodedockersetup:latest",
-				"dockerfile": "${workspaceFolder}/Dockerfile",
-				"context": "${workspaceFolder}",
-				"pull": true
-			}
-		},
-
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Docker Compose Up",
+            "type": "shell",
+            "command": "docker-compose -f docker-compose.debug.yml up --build",
+            "isBackground": false,
+            "problemMatcher": []
+        }
+    ]
 }

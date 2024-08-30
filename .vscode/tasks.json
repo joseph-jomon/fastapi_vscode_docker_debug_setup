@@ -7,6 +7,14 @@
             "command": "docker-compose -f docker-compose.debug.yml up --build",
             "isBackground": false,
             "problemMatcher": []
+        },
+        {
+            "label": "Docker Compose Down",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["-f", "docker-compose.debug.yml", "down"],
+            "problemMatcher": []
         }
     ]
+
 }

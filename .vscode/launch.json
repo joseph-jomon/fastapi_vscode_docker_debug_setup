@@ -6,6 +6,7 @@
             "type": "debugpy",
             "request": "attach",
            // "preLaunchTask": "Docker Compose Up",
+           "postDebugTask": "Docker Compose Down",  // Runs after debugger stops
             "connect": {
                 "host": "localhost",
                 "port": 5678

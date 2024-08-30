@@ -10,5 +10,14 @@
 <body>
     <h1>Item {{ id }}</h1>
     <p>This is the detail page for item with ID: {{ id }}</p>
+
+    <!-- Search Bar Form -->
+    <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Search..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Example of including a static JavaScript file -->
+    <script src="/static/script.js"></script>
 </body>
 </html>

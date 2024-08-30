@@ -38,6 +38,14 @@ async def read_item(request: Request, id: str):
         context={"request": request, "id": id}  # Context data to be passed to the template
     )
 
+@app.get("/search", response_class=HTMLResponse)
+async def search(request: Request, query: str):
+    # Process the search query (for now, we'll just pass it back to the template)
+    return templates.TemplateResponse(
+        "search_results.html",  # A new template we'll create
+        {"request": request, "query": query}
+    )
+
 
 
 @app.get("/")

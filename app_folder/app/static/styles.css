@@ -1,0 +1,10 @@
+/* static/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #30e85e;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    color: #f28927;
+}

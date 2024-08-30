@@ -2,6 +2,12 @@ from typing import Union
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
+
 
 
 app = FastAPI()
@@ -18,6 +24,19 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],    
 )
+
+# Mount the static directory to serve static files like CSS and JS
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Define the directory where your templates are stored
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/items/{id}", response_class=HTMLResponse)
+async def read_item(request: Request, id: str):
+    return templates.TemplateResponse(
+        name="item.html",  # The name of the template file
+        context={"request": request, "id": id}  # Context data to be passed to the template
+    )
 
 
 

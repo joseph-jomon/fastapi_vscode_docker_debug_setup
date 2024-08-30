@@ -4,9 +4,10 @@
         {
             "label": "Docker Compose Up",
             "type": "shell",
-            "command": "docker-compose -f docker-compose.debug.yml up --build",
-            "isBackground": false,
-            "problemMatcher": []
+            "command": "docker-compose",
+            "args": ["-f", "docker-compose.debug.yml", "up", "--build"],
+            "isBackground": true,
+            "problemMatcher": [],
         },
         {
             "label": "Docker Compose Down",

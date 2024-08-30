@@ -11,12 +11,18 @@ services:
       - "9200:9200"
     volumes:
       - es_data:/usr/share/elasticsearch/data
+   # healthcheck:
+     # test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health"]
+      #interval: 30s
+     # timeout: 10s
+      #retries: 5
+      #start_period: 30s
 
   fastapi_app:
     build:
       context: .
       dockerfile: app_folder/Dockerfile
-    command: ["sh", "-c", "python -m debugpy  --wait-for-client --listen 0.0.0.0:5678 -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"]
+    command: ["sh", "-c", "python -m debugpy --wait-for-client  --listen 0.0.0.0:5678 -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"]
     ports: 
       - 8000:8000
       - 5678:5678
@@ -26,6 +32,16 @@ services:
       - ELASTICSEARCH_HOST=http://elasticsearch:9200
     depends_on:
       - elasticsearch
+      #elasticsearch:
+       # condition: service_healthy
+       
+   # healthcheck:
+      #test: ["CMD", "curl","-f","http://localhost:8000"]
+      #interval: 10s
+      #timeout: 5s
+      #retries: 3
+      #start_period: 30s
+
 volumes:
   es_data:
     driver: local
